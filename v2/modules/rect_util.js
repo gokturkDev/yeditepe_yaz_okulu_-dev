@@ -1,5 +1,7 @@
 
 
+
+// Will be square
 export class Rectangle {
     constructor(x, y, h, w) {
         this.X = x;

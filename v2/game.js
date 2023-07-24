@@ -1,6 +1,10 @@
 import { Rectangle, drawRectangle, drawAdjacentRectangle, drawBeneathRectangle } from "./modules/rect_util.js";
 
 
+// TODO Create a board object
+// TODO  Turtle Object
+
+
 //Initialize the canvas
 var canvasWidth = 600;
 var canvasHeight = 400;
@@ -37,7 +41,11 @@ function drawRectangles(){
 function drawArrow(){
 
     /*
-    
+
+    Switch statement
+    North east west south
+
+
     */
 
     
