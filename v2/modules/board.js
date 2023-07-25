@@ -15,6 +15,13 @@ export class Board {
         return this.getTile(row,col).position
     }
 
+    getCenterOfTile(row, col){
+        let tile = this.getTile(row, col)
+        let tileStartPos = tile.position
+        let centerPos = new Point(tileStartPos.X + this.squareSideLength / 2, tileStartPos.Y + this.squareSideLength / 2)
+        return centerPos
+    }
+
     getTile(row, col) {
         return this.tiles[row][col]
     }
