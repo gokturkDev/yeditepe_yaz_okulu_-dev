@@ -12,12 +12,36 @@ export class Board {
     }
 
     getTilePosition(row, col){
-        let xPos = col * this.squareSideLength
-        let yPos = row * this.squareSideLength
-        return new Point(xPos, yPos)
+        return this.getTile(row,col).position
+    }
+
+    getTile(row, col) {
+        return this.tiles[row][col]
+    }
+
+    activateTile(row, col) {
+        let tile = this.tiles[row][col]
+        tile.active = true
+    }
+    
+    deactiveTile(row, col){
+        let tile = this.tiles[row][col]
+        tile.active = false
     }
     
 }
+
+
+export class Tile{
+
+    constructor(row, col, position, active=false) {
+        this.row = row
+        this.col = col
+        this.position = position
+        this.active = active
+    }
+}
+
 
 
 function populateTiles(board){
@@ -27,7 +51,8 @@ function populateTiles(board){
     for (let i = 0; i < row; i++) {
         board.tiles[i] = [];
         for (let j = 0; j < col; j++) {
-            board.tiles[i][j] = 0;
+            let position = new Point( i * board.squareSideLength, j * board.squareSideLength)
+            board.tiles[i][j] = new Tile(i, j, position, false);
         }
     }
 

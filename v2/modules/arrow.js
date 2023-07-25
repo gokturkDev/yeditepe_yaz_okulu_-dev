@@ -1,39 +1,25 @@
-import { Point } from "./util.js"
-
 export class Arrow{
 
-    constructor(centerPoint, direction,  length=20) {
-        this.centerPoint = centerPoint
+    constructor(currentTile, direction,  length=20) {
+
+        this.currentTile = currentTile
+
+        this.centerPoint = 0
         this.length = length
         this.direction = direction
     }
 
-}
 
-var arrow = new Arrow(new Point(125, 85), "W")
-document.addEventListener('keydown', logKey);
-
-function logKey(e) {
-    switch(e.code) {
-        case "ArrowUp":
-            arrow.direction = "N"
-        break
-        case "ArrowDown":
-            arrow.direction = "S"
-        break
-        case "ArrowLeft":
-            arrow.direction = "W"
-        break
-        case "ArrowRight":
-            arrow.direction = "E"
-        break
-
+    moveTo(point){
+        this.centerPoint = point;
     }
-    console.log(e.code)
+
 }
 
 
-export function drawArrow(ctx){
+
+
+export function drawArrow(ctx, arrow){
     
     switch (arrow.direction) {    
         case "N":
