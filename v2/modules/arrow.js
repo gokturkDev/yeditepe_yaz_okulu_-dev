@@ -2,28 +2,40 @@ import { Point } from "./util.js"
 
 export class Arrow{
 
-    constructor(centerPoint, length=20) {
+    constructor(centerPoint, direction,  length=20) {
         this.centerPoint = centerPoint
         this.length = length
+        this.direction = direction
     }
 
 }
 
+var arrow = new Arrow(new Point(125, 85), "W")
+document.addEventListener('keydown', logKey);
+
+function logKey(e) {
+    switch(e.code) {
+        case "ArrowUp":
+            arrow.direction = "N"
+        break
+        case "ArrowDown":
+            arrow.direction = "S"
+        break
+        case "ArrowLeft":
+            arrow.direction = "W"
+        break
+        case "ArrowRight":
+            arrow.direction = "E"
+        break
+
+    }
+    console.log(e.code)
+}
 
 
 export function drawArrow(ctx){
-
-    /*
-
-    Switch statement
-    North east west south
-
-
-    */
-
-    var arrow = new Arrow(new Point(125, 85))
-    var direction = "W"
-    switch (direction) {    
+    
+    switch (arrow.direction) {    
         case "N":
             drawArrowNorth(ctx, arrow)
         break;
@@ -35,14 +47,8 @@ export function drawArrow(ctx){
         break;
         case "W":
             drawArrowWest(ctx, arrow)
-
         break;
     }
-
-    
-
-
-
 
 }
 
