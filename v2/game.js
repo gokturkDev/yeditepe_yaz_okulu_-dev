@@ -1,5 +1,5 @@
 import { Square, drawSquare, drawAdjacentSquare, drawBeneathSquare } from "./modules/square_util.js";
-
+import { drawArrow } from "./modules/arrow.js";
 
 // TODO Create a board object
 // TODO  Turtle Object
@@ -24,7 +24,7 @@ var gameCanvas = {
 function gameLoop() {
     //drawSvgArrow()
     drawSquares()
-    drawArrow()
+    drawArrow(ctx)
     requestAnimationFrame(gameLoop)
 }
 
@@ -38,42 +38,6 @@ function drawSquares(){
 }
 
 
-function drawArrow(){
-
-    /*
-
-    Switch statement
-    North east west south
-
-
-    */
-
-    
-    var startX = 125
-    var startY = 85
-
-    //Tail of arrow
-    ctx.beginPath();
-    ctx.setLineDash([]);
-    ctx.moveTo(startX, startY);
-    ctx.lineTo(startX, startY + 15);
-    ctx.stroke();
-    //Head of arrow
-
-    //Left 
-    ctx.beginPath();
-    ctx.setLineDash([]);
-    ctx.moveTo(startX, startY);
-    ctx.lineTo(startX - 5, startY + 5);
-    ctx.stroke();
-    //Right
-    ctx.beginPath();
-    ctx.setLineDash([]);
-    ctx.moveTo(startX, startY);
-    ctx.lineTo(startX + 5, startY + 5);
-    ctx.stroke();
-
-}
 
 
 function startGame() {
