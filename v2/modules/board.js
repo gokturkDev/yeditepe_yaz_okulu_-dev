@@ -8,7 +8,6 @@ export class Board {
         this.squareSideLength = squareSideLength
         this.tiles = []
         populateTiles(this)
-        console.log(this.tiles)
     }
 
     getTilePosition(row, col){
@@ -42,9 +41,9 @@ export class Tile{
         this.active = active
     }
 
-    get centerPosition(){
-        let centerX = this.position.X + this.sideLength
-        let centerY = this.position.Y + this.sideLength
+    get centerPoint(){
+        let centerX = this.position.X + this.sideLength / 2
+        let centerY = this.position.Y + this.sideLength / 2
         return new Point(centerX, centerY)
 
     }

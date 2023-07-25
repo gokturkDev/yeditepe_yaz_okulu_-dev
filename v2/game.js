@@ -27,7 +27,7 @@ var gameConfig = {
     document.getElementById("gamecanvas").appendChild(this.canvas);
 
     this.board = new Board(canvasWidth, canvasHeight, 100);
-    this.arrow = new Arrow(null,null,null );
+    this.arrow = new Arrow(this.board.getTile(0, 0),"W");
   },
   arrow: null,
   board: null,
@@ -43,15 +43,15 @@ function gameLoop() {
 
 //ARROW MOVEMENTS
 
-document.addEventListener("keydown", moveArrow);
+document.addEventListener("keydown", rotateArrow);
 
-function moveArrow(e) {
+function rotateArrow(e) {
   let arrow = gameConfig.arrow;
+  console.log(e.code)
   switch (e.code) {
+    
     case "ArrowUp":
-      arrow.moveTo();
       arrow.direction = "N";
-
       break;
     case "ArrowDown":
       arrow.direction = "S";
@@ -62,10 +62,16 @@ function moveArrow(e) {
     case "ArrowRight":
       arrow.direction = "E";
       break;
+    case "KeyF":
+        moveArrow(arrow)
+    break;
+
   }
 }
 
-function moveArrowToNextTile() {}
+function moveArrow(arrow) {
+    
+}
 
 function drawLevel() {
   let board = gameConfig.board;

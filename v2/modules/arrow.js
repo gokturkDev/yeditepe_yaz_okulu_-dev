@@ -14,10 +14,6 @@ export class Arrow {
     }
     return new Point(-1, -1)
   }
-
-  moveTo(point) {
-    this.centerPoint = point;
-  }
 }
 
 export function drawArrow(ctx, arrow) {
