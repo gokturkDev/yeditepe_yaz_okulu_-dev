@@ -23,10 +23,10 @@ export function drawGoals(ctx, board){
 		  for (let j = 0; j < board.tiles[i].length; j++) {
 			  if (board.tiles[i][j].active == true) {
 				  let tilePosition = board.getTilePosition(i, j);
-				  drawSquare(
+				  /*drawCircle(
 					  ctx,
-					  new Square(tilePosition.X, tilePosition.Y, board.squareSideLength)
-				  );
+					  new Circle(tilePosition.X, tilePosition.Y, board.squareSideLength)
+				  ); */
 			  }
 		  }
 	  }
@@ -35,11 +35,23 @@ export function drawGoals(ctx, board){
 
 
 class Circle {
-	constructor(x, y, radius){
-		this.X = x,
-		this.Y = y,
+	constructor(centerX, centerY, radius){
+		this.centerX = centerX,
+		this.centerY = centerY,
 		this.radius = radius
 	}
+}
+
+
+function drawCircle(ctx, circle) {
+	
+	ctx.beginPath();
+	ctx.arc(circle.centerX, circle.centerY, circle.radius, 0, 2 * Math.PI, false);
+	ctx.fillStyle = 'blue';
+	ctx.fill();
+	ctx.lineWidth = 5;
+	ctx.strokeStyle = '#003300';
+	ctx.stroke();
 }
 
 
