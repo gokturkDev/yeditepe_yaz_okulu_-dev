@@ -14,12 +14,11 @@ export class Board {
 	}
 
 	getTile(row, col) {
-        try {
-            return this.tiles[row][col];
-        } catch (err){
-            return null
-        }
-		
+		try {
+			return this.tiles[row][col];
+		} catch (err) {
+			return null;
+		}
 	}
 
 	activateTile(row, col) {
@@ -34,17 +33,17 @@ export class Board {
 
 	isTileValid(tile) {
 		//Tile is not out of bounds
-        console.log(tile)
+		console.log(tile);
 		if (
-            tile != null && 
+			tile != null &&
 			tile.row > -1 &&
 			tile.col > -1 &&
 			tile.row < this.tiles.length &&
 			tile.col < this.tiles[tile.row].length
 		) {
-            return true
+			return true;
 		}
-        return false
+		return false;
 	}
 }
 

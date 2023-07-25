@@ -1,6 +1,6 @@
 export class Point {
-    constructor(x, y) {
-        this.X = x;
-        this.Y = y;
-    }
+	constructor(x, y) {
+		this.X = x;
+		this.Y = y;
+	}
 }
