@@ -1,4 +1,4 @@
-import { Rectangle, drawRectangle, drawAdjacentRectangle, drawBeneathRectangle } from "./modules/rect_util.js";
+import { Square, drawSquare, drawAdjacentSquare, drawBeneathSquare } from "./modules/square_util.js";
 
 
 // TODO Create a board object
@@ -23,18 +23,18 @@ var gameCanvas = {
 
 function gameLoop() {
     //drawSvgArrow()
-    drawRectangles()
+    drawSquares()
     drawArrow()
     requestAnimationFrame(gameLoop)
 }
 
-function drawRectangles(){
-    var rect = new Rectangle(75, 35, 100, 100)
-    drawRectangle(ctx, rect)
-    let rect2 = drawAdjacentRectangle(ctx, rect)
-    let rect3 = drawAdjacentRectangle(ctx, rect2)
-    let rect4 = drawBeneathRectangle(ctx, rect3)
-    let rect5 = drawBeneathRectangle(ctx, rect4)
+function drawSquares(){
+    var square = new Square(75, 35, 100)
+    drawSquare(ctx, square)
+    let square2 = drawAdjacentSquare(ctx, square)
+    let square3 = drawAdjacentSquare(ctx, square2)
+    let square4 = drawBeneathSquare(ctx, square3)
+    let square5 = drawBeneathSquare(ctx, square4)
 }
 
 
