@@ -14,6 +14,10 @@ export class Arrow {
     }
     return new Point(-1, -1)
   }
+  
+  moveToTile(tile){
+    this.currentTile = tile
+  }
 }
 
 export function drawArrow(ctx, arrow) {

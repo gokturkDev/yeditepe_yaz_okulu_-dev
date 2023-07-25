@@ -70,8 +70,35 @@ function rotateArrow(e) {
 }
 
 function moveArrow(arrow) {
-    
+    let currentTile = arrow.currentTile
+    let board = gameConfig.board
+    let nextTile;
+    console.log(currentTile)
+    switch(arrow.direction){
+      case "N":
+        nextTile = board.getTile(currentTile.row - 1, currentTile.col)
+        break
+      case "S":
+        nextTile = board.getTile(currentTile.row + 1, currentTile.col)
+        break
+      
+      case "W":
+        nextTile = board.getTile(currentTile.row, currentTile.col - 1)
+        break
+      
+      case "E":
+        nextTile = board.getTile(currentTile.row, currentTile.col + 1)
+        break
+      
+    }
+
+    if ((board.isTileValid(nextTile)) && nextTile.active ){
+        arrow.moveToTile(nextTile)
+    }
 }
+
+
+
 
 function drawLevel() {
   let board = gameConfig.board;
