@@ -15,13 +15,6 @@ export class Board {
         return this.getTile(row,col).position
     }
 
-    getCenterOfTile(row, col){
-        let tile = this.getTile(row, col)
-        let tileStartPos = tile.position
-        let centerPos = new Point(tileStartPos.X + this.squareSideLength / 2, tileStartPos.Y + this.squareSideLength / 2)
-        return centerPos
-    }
-
     getTile(row, col) {
         return this.tiles[row][col]
     }
@@ -41,11 +34,19 @@ export class Board {
 
 export class Tile{
 
-    constructor(row, col, position, active=false) {
+    constructor(row, col, position, sideLength, active=false) {
         this.row = row
         this.col = col
         this.position = position
+        this.sideLength = sideLength
         this.active = active
+    }
+
+    get centerPosition(){
+        let centerX = this.position.X + this.sideLength
+        let centerY = this.position.Y + this.sideLength
+        return new Point(centerX, centerY)
+
     }
 }
 
@@ -59,7 +60,7 @@ function populateTiles(board){
         board.tiles[i] = [];
         for (let j = 0; j < col; j++) {
             let position = new Point( i * board.squareSideLength, j * board.squareSideLength)
-            board.tiles[i][j] = new Tile(i, j, position, false);
+            board.tiles[i][j] = new Tile(i, j, position, board.squareSideLength, false);
         }
     }
 

@@ -27,7 +27,7 @@ var gameConfig = {
     document.getElementById("gamecanvas").appendChild(this.canvas);
 
     this.board = new Board(canvasWidth, canvasHeight, 100);
-    this.arrow = new Arrow();
+    this.arrow = new Arrow(null,null,null );
   },
   arrow: null,
   board: null,
