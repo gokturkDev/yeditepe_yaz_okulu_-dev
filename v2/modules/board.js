@@ -6,6 +6,7 @@ export class Board {
 		this.height = height;
 		this.squareSideLength = squareSideLength;
 		this.tiles = [];
+		this.goals = [];
 		populateTiles(this);
 	}
 
@@ -63,6 +64,14 @@ export class Tile {
 	}
 }
 
+export class Goal {
+	constructor(row, col, position) {
+		this.row = row;
+		this.col = col;
+		this.position = position;
+	}
+}
+
 function populateTiles(board) {
 	let row = (board.width /= board.squareSideLength);
 	let col = (board.height /= board.squareSideLength);
@@ -80,6 +89,21 @@ function populateTiles(board) {
 				board.squareSideLength,
 				false
 			);
+		}
+	}
+}
+
+function populateGoals(board) {
+	let row = (board.width /= board.squareSideLength);
+	let col = (board.height /= board.squareSideLength);
+	for (let i = 0; i < row; i++) {
+		board.tiles[i] = [];
+		for (let j = 0; j < col; j++) {
+			let position = new Point(
+				j * board.squareSideLength,
+				i * board.squareSideLength
+			);
+			board.tiles[i][j] = new Goal(i, j, position);
 		}
 	}
 }
