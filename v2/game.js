@@ -3,7 +3,7 @@ import {
   drawGoals
 } from "./modules/draw_utils.js";
 import { Arrow, drawArrow } from "./modules/arrow.js";
-import { Board } from "./modules/board.js";
+import { Board } from "./modules/board/board.js";
 import { Point } from "./modules/util.js";
 
 //Initialize the canvas
