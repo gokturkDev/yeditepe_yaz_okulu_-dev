@@ -1,11 +1,9 @@
 import { gameConfig } from "../../game.js";
-
+import { playBlockedSound, playCollectSound } from "../sound/player.js";
 
 export function startKeyListener() {
-	document.addEventListener("keydown", rotateArrow);		
+	document.addEventListener("keydown", rotateArrow);
 }
-
-
 
 function rotateArrow(e) {
 	let arrow = gameConfig.arrow;
@@ -50,8 +48,11 @@ function moveArrow(arrow) {
 
 	if (board.isTileValid(nextTile) && nextTile.active) {
 		arrow.moveToTile(nextTile);
-		if (nextTile.isGoalTile){
-			arrow.eat(nextTile)
+		if (nextTile.isGoalTile) {
+			arrow.eat(nextTile);
+			playCollectSound();
 		}
+	} else {
+		playBlockedSound();
 	}
 }
