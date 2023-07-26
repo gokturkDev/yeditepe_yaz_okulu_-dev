@@ -34,7 +34,6 @@ export class Board {
 
 	isTileValid(tile) {
 		//Tile is not out of bounds
-		console.log(tile);
 		if (
 			tile != null &&
 			tile.row > -1 &&

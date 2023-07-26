@@ -9,7 +9,6 @@ export function startKeyListener() {
 
 function rotateArrow(e) {
 	let arrow = gameConfig.arrow;
-	console.log(e.code);
 	switch (e.code) {
 		case "ArrowUp":
 			arrow.direction = "N";
@@ -32,7 +31,6 @@ function moveArrow(arrow) {
 	let currentTile = arrow.currentTile;
 	let board = gameConfig.board;
 	let nextTile;
-	console.log(currentTile);
 	switch (arrow.direction) {
 		case "N":
 			nextTile = board.getTile(currentTile.row - 1, currentTile.col);
