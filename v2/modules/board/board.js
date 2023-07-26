@@ -6,6 +6,8 @@ export class Board {
 		this.height = height;
 		this.squareSideLength = squareSideLength;
 		this.tiles = [];
+		this.arrowDefaultTile;
+		this.arrowDefaultDirection;
 		populateTiles(this);
 	}
 

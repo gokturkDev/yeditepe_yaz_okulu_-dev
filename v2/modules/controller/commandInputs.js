@@ -28,6 +28,15 @@ function startPlay(doc) {
 }
 function stopPlay(doc) {
 	toggle(doc);
+	resetArrowPosition()
+}
+
+
+function resetArrowPosition(){
+	let board = gameConfig.board
+	let arrow = gameConfig.arrow
+	arrow.moveToTile(board.defaultArrowTile)
+	arrow.direction = board.defaultArrowDirection
 }
 
 function promptInvalidCommand() {

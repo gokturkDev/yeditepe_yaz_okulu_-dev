@@ -26,6 +26,8 @@ export var gameConfig = {
 		this.board.activateTile(2, 3);
 
 		this.board.setGoalTile(2, 3);
+		this.board.defaultArrowTile = this.board.getTile(0, 0)
+		this.board.defaultArrowDirection = "E"
 
 
 		this.arrow = new Arrow(this.board.getTile(0, 0), "W");
