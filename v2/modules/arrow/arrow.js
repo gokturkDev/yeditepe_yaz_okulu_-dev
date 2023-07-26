@@ -1,4 +1,4 @@
-import { Point } from "./util.js";
+import { Point } from "../util.js";
 
 export class Arrow {
 	constructor(currentTile = null, direction, length = 20) {
