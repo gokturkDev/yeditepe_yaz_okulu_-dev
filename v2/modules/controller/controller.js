@@ -1,6 +1,7 @@
 import { gameConfig } from "../../game.js";
 import { playBlockedSound, playCollectSound } from "../sound/player.js";
 
+
 export function startKeyListener() {
 	document.addEventListener("keydown", rotateArrow);
 }
