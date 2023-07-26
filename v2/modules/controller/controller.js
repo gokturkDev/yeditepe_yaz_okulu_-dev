@@ -12,7 +12,7 @@ function rotateArrow(e) {
 		case "ArrowUp":
 			arrow.direction = "N";
 			break;
-		case "ArrowDown":
+		case "ArrowDown": 
 			arrow.direction = "S";
 			break;
 		case "ArrowLeft":
@@ -22,11 +22,11 @@ function rotateArrow(e) {
 			arrow.direction = "E";
 			break;
 		case "KeyF":
-			moveArrow(arrow);
+			//moveArrow(arrow);
 			break;
 	}
 }
-function moveArrow(arrow) {
+export function moveArrow(arrow) {
 	let currentTile = arrow.currentTile;
 	let board = gameConfig.board;
 	let nextTile;

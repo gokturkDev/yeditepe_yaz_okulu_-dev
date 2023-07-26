@@ -1,5 +1,6 @@
 import { Arrow } from "./modules/arrow/arrow.js";
 import { Board } from "./modules/board/board.js";
+import { startCommandInputListener } from "./modules/controller/commandparser.js";
 import { startKeyListener } from "./modules/controller/controller.js";
 import { drawGame } from "./modules/gui/gui.js";
 
@@ -30,16 +31,23 @@ export var gameConfig = {
 		this.arrow = new Arrow(this.board.getTile(0, 0), "W");
 
 		startKeyListener();
+		startCommandInputListener()
 	},
 	arrow: null,
 	board: null,
 	ctx: null,
+	playingCommand: false
 };
 
 function gameLoop() {
 	drawGame()
 	requestAnimationFrame(gameLoop);
 }
+
+
+
+
+
 
 
 function startGame() {

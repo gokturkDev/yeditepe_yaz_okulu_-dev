@@ -30,7 +30,7 @@
                 
             <label for="message">Enter the command:</label>
             <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                <textarea id="command" name="message" rows="4" cols="50" style="border: 4mm ridge rgba(211, 220, 50, .6); outline: none;"></textarea>
+                <textarea id="command" name="message" type="text"  rows="4" cols="50" style="border: 4mm ridge rgba(211, 220, 50, .6); outline: none;"></textarea>
                 <div class="fake-player">
                     <button role="play" class="play"></button>
                     <button role="pause" class="pause hidden"></button>
@@ -41,19 +41,7 @@
             
         </div>
     </div>
-    <script>
-
-        const player = document.querySelector('.fake-player');
-
-        function clickHandler () { 
-        const buttons = Array.from(this.children);
-        buttons.forEach(button => button.classList.toggle('hidden'))
-        };
-
-        player.addEventListener('click', clickHandler);
-    </script>
-
-    
+ 
 
 </body>
 </html>
