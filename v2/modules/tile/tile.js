@@ -1,12 +1,13 @@
 import { Point } from "../util.js";
 
 export class Tile {
-	constructor(row, col, position, sideLength, active = false) {
+	constructor(row, col, position, sideLength, active = false, isGoalTile = false) {
 		this.row = row;
 		this.col = col;
 		this.position = position;
 		this.sideLength = sideLength;
 		this.active = active;
+		this.isGoalTile = isGoalTile
 	}
 
 	get centerPoint() {

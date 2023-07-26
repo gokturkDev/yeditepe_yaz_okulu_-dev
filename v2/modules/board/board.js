@@ -6,7 +6,6 @@ export class Board {
 		this.height = height;
 		this.squareSideLength = squareSideLength;
 		this.tiles = [];
-		this.goals = [];
 		populateTiles(this);
 	}
 
@@ -23,13 +22,23 @@ export class Board {
 	}
 
 	activateTile(row, col) {
-		let tile = this.tiles[row][col];
+		let tile = this.getTile(row, col)
 		tile.active = true;
 	}
 
 	deactiveTile(row, col) {
-		let tile = this.tiles[row][col];
+		let tile = this.getTile(row,col)
 		tile.active = false;
+	}
+
+	setGoalTile(row, col) {
+		let tile = this.getTile(row, col)
+		tile.isGoalTile = true
+	}
+
+	unsetGoalTile(row, col) {
+		let tile = this.getTile(row, col)
+		tile.isGoalTile = false
 	}
 
 	isTileValid(tile) {

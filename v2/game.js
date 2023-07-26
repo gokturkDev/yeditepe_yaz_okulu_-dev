@@ -1,7 +1,7 @@
-import { drawTiles, drawGoals, drawArrow } from "./modules/gui/gui.js";
 import { Arrow } from "./modules/arrow/arrow.js";
 import { Board } from "./modules/board/board.js";
 import { startKeyListener } from "./modules/controller/controller.js";
+import { drawGame } from "./modules/gui/gui.js";
 
 //Initialize the canvas
 var canvasWidth = 600;
@@ -16,7 +16,6 @@ export var gameConfig = {
 		this.ctx = this.context;
 		document.getElementById("gamecanvas").appendChild(this.canvas);
 
-
 		this.board = new Board(canvasWidth, canvasHeight, 100);
 		this.board.activateTile(0, 0);
 		this.board.activateTile(0, 1);
@@ -24,11 +23,13 @@ export var gameConfig = {
 		this.board.activateTile(2, 1);
 		this.board.activateTile(2, 2);
 		this.board.activateTile(2, 3);
+
+		this.board.setGoalTile(2, 3);
+
+
 		this.arrow = new Arrow(this.board.getTile(0, 0), "W");
 
-
-
-		startKeyListener()
+		startKeyListener();
 	},
 	arrow: null,
 	board: null,
@@ -36,22 +37,10 @@ export var gameConfig = {
 };
 
 function gameLoop() {
-	gameConfig.ctx.clearRect(
-		0,
-		0,
-		gameConfig.canvas.width,
-		gameConfig.canvas.height
-	);
-	drawLevel();
-	drawArrow(gameConfig.ctx, gameConfig.arrow);
+	drawGame()
 	requestAnimationFrame(gameLoop);
 }
 
-function drawLevel() {
-	let board = gameConfig.board;
-	drawTiles(gameConfig.ctx, board);
-	drawGoals(gameConfig.ctx, board);
-}
 
 function startGame() {
 	gameConfig.start();
