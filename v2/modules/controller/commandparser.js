@@ -1,18 +1,57 @@
 import { moveArrow, rotateArrowRight } from "./controller.js";
 
+
+
 export function parseCommand(command) {
-	for (let i = 0; i < command.length; i += 2) {
-		let commandCouple = command.charAt(i) + command.charAt(i + 1);
-		parseCommandCouple(commandCouple);
+
+	let unpackedCommand = unpackCommand(command)
+	executeCommands(unpackedCommand)
+}
+
+
+/*
+		let commandType = commandCouple.charAt(i);
+		let commandRepetition = parseInt(commandCouple.charAt(i+1));
+		let commandCallBack;
+
+		switch (commandType) {
+			case "F":
+				commandCallBack = moveArrow;
+				break;
+			case "R":
+				commandCallBack = rotateArrowRight;
+				break;
+		}
+
+		*/
+
+function unpackCommand(command){
+	let unpackedCommand = ""
+	for(let i = 0; i < command.length; i+=2){
+		let commandType = command.charAt(i);
+		let commandRepetition = parseInt(command.charAt(i+1));
+		for (let j = 0; j < commandRepetition; j++){
+			unpackedCommand += commandType
+		}
+	}
+
+	return unpackedCommand
+
+}
+
+function executeCommands(unpackedCommand){
+	console.log(unpackedCommand)
+	let currCommand = unpackedCommand.charAt(0)
+	executeCommand(currCommand)
+	unpackedCommand = unpackedCommand.substring(1, unpackedCommand.length)
+	if(unpackedCommand.length > 0){
+		setTimeout(executeCommands.bind(null, unpackedCommand), 1000);
 	}
 }
 
-function parseCommandCouple(commandCouple) {
-	let commandType = commandCouple.charAt(0);
-	let commandRepetition = parseInt(commandCouple.charAt(1));
+function executeCommand(command) {
 	let commandCallBack;
-
-	switch (commandType) {
+	switch (command) {
 		case "F":
 			commandCallBack = moveArrow;
 			break;
@@ -20,10 +59,7 @@ function parseCommandCouple(commandCouple) {
 			commandCallBack = rotateArrowRight;
 			break;
 	}
-
-	for (let i = 0; i < commandRepetition; i++) {
-		commandCallBack();
-	}
+	commandCallBack();
 }
 
 export function isValidCommand(command) {

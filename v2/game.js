@@ -30,7 +30,7 @@ export var gameConfig = {
 		this.board.defaultArrowDirection = "E"
 
 
-		this.arrow = new Arrow(this.board.getTile(0, 0), "W");
+		this.arrow = new Arrow(this.board.getTile(0, 0), "E");
 
 		startKeyListener();
 		startCommandInputListener()
