@@ -1,6 +1,6 @@
 import { Arrow } from "./modules/arrow/arrow.js";
 import { Board } from "./modules/board/board.js";
-import { startCommandInputListener } from "./modules/controller/commandparser.js";
+import { startCommandInputListener } from "./modules/controller/commandInputs.js";
 import { startKeyListener } from "./modules/controller/controller.js";
 import { drawGame } from "./modules/gui/gui.js";
 
