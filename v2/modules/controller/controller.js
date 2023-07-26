@@ -1,33 +1,31 @@
 import { gameConfig } from "../../game.js";
 import { playBlockedSound, playCollectSound } from "../sound/player.js";
 
-
 export function startKeyListener() {
-	document.addEventListener("keydown", rotateArrow);
+	//document.addEventListener("keydown", rotateArrow);
 }
 
-function rotateArrow(e) {
+export function rotateArrowRight() {
 	let arrow = gameConfig.arrow;
-	switch (e.code) {
-		case "ArrowUp":
-			arrow.direction = "N";
-			break;
-		case "ArrowDown": 
-			arrow.direction = "S";
-			break;
-		case "ArrowLeft":
-			arrow.direction = "W";
-			break;
-		case "ArrowRight":
+	switch (arrow.direction) {
+		case "N":
 			arrow.direction = "E";
 			break;
-		case "KeyF":
-			//moveArrow(arrow);
+		case "E":
+			arrow.direction = "S";
+			break;
+		case "S":
+			arrow.direction = "W";
+			break;
+		case "W":
+			arrow.direction = "N";
 			break;
 	}
 }
-export function moveArrow(arrow) {
+export function moveArrow() {
+	let arrow = gameConfig.arrow;
 	let currentTile = arrow.currentTile;
+
 	let board = gameConfig.board;
 	let nextTile;
 	switch (arrow.direction) {

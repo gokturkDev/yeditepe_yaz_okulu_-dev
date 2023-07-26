@@ -1,5 +1,5 @@
 import { gameConfig } from "../../game.js";
-import { isValidCommand } from "./commandparser.js";
+import { isValidCommand, parseCommand } from "./commandparser.js";
 import { togglePlayButton } from "../gui/command/command.js";
 
 const commandBox = document.getElementById("command");
@@ -24,6 +24,7 @@ function startPlay(doc) {
 		return false;
 	}
 	toggle(doc);
+	parseCommand(gameConfig.command.currentCommand)
 }
 function stopPlay(doc) {
 	toggle(doc);
