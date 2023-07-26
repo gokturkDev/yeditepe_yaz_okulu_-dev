@@ -6,6 +6,7 @@ import {
 } from "./arrow/arrow_utils.js";
 import { drawSquare, Square } from "./shapes/square.js";
 import { gameConfig } from "../../game.js";
+import { Circle, drawCircle } from "./shapes/circle.js";
 
 export function drawGame() {
 	gameConfig.ctx.clearRect(
@@ -56,12 +57,16 @@ function drawTiles(ctx, board) {
 function drawGoals(ctx, board) {
 	for (let i = 0; i < board.tiles.length; i++) {
 		for (let j = 0; j < board.tiles[i].length; j++) {
-			if (board.tiles[i][j].active == true) {
+			if (board.tiles[i][j].isGoalTile == true) {
 				let tilePosition = board.getTilePosition(i, j);
-				/*drawCircle(
+				drawCircle(
 					ctx,
-					new Circle(tilePosition.X, tilePosition.Y, board.squareSideLength)
-				); */
+					new Circle(
+						tilePosition.X + board.squareSideLength / 2,
+						tilePosition.Y + board.squareSideLength / 2,
+						board.squareSideLength / 10
+					)
+				);
 			}
 		}
 	}
