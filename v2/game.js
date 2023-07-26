@@ -36,18 +36,16 @@ export var gameConfig = {
 	arrow: null,
 	board: null,
 	ctx: null,
-	playingCommand: false
+	command: {
+		playingCommand: false,
+		currentCommand: ""
+	}
 };
 
 function gameLoop() {
 	drawGame()
 	requestAnimationFrame(gameLoop);
 }
-
-
-
-
-
 
 
 function startGame() {
