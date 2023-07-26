@@ -1,5 +1,5 @@
 import { drawTiles, drawGoals, drawArrow } from "./modules/gui/gui.js";
-import { Arrow } from "./modules/arrow.js";
+import { Arrow } from "./modules/arrow/arrow.js";
 import { Board } from "./modules/board/board.js";
 
 //Initialize the canvas
