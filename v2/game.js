@@ -5,10 +5,18 @@ import { startKeyListener } from "./modules/controller/controller.js";
 import { drawGame } from "./modules/gui/gui.js";
 
 //Initialize the canvas
-var canvasWidth = 600;
-var canvasHeight = 400;
+let canvasWidth = 600;
+let canvasHeight = 400;
 
-export var gameConfig = {
+
+// # TODO
+// - make border red when hit
+// - reset auto
+// - change reset button icon 
+
+
+
+export let gameConfig = {
 	canvas: document.createElement("canvas"),
 	start: function () {
 		this.canvas.width = canvasWidth;
