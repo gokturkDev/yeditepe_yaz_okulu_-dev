@@ -5,6 +5,7 @@ export class Arrow {
 		this.currentTile = currentTile;
 		this.length = length;
 		this.direction = direction;
+		this.score = 0
 	}
 
 	get centerPoint() {
@@ -16,5 +17,13 @@ export class Arrow {
 
 	moveToTile(tile) {
 		this.currentTile = tile;
+	}
+
+
+	eat(tile){
+		if (tile.isGoalTile){
+			tile.isGoalTile = false
+			this.score += 1
+		}
 	}
 }

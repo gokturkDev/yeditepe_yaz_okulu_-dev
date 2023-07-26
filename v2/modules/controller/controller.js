@@ -50,5 +50,8 @@ function moveArrow(arrow) {
 
 	if (board.isTileValid(nextTile) && nextTile.active) {
 		arrow.moveToTile(nextTile);
+		if (nextTile.isGoalTile){
+			arrow.eat(nextTile)
+		}
 	}
 }

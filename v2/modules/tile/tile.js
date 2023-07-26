@@ -10,6 +10,7 @@ export class Tile {
 		this.isGoalTile = isGoalTile
 	}
 
+
 	get centerPoint() {
 		let centerX = this.position.X + this.sideLength / 2;
 		let centerY = this.position.Y + this.sideLength / 2;
