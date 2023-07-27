@@ -46,9 +46,7 @@ function endOfCommand() {
 
 function resetArrowPosition() {
 	let board = gameConfig.board;
-	let arrow = gameConfig.arrow;
-	arrow.moveToTile(board.defaultArrowTile);
-	arrow.direction = board.defaultArrowDirection;
+	board.resetArrowToDefaultPosition();
 }
 
 function promptInvalidCommand() {

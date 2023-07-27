@@ -6,7 +6,7 @@ export function startKeyListener() {
 }
 
 export function rotateArrowRight() {
-	let arrow = gameConfig.arrow;
+	let arrow = gameConfig.board.arrow;
 	switch (arrow.direction) {
 		case "N":
 			arrow.direction = "E";
@@ -23,7 +23,7 @@ export function rotateArrowRight() {
 	}
 }
 export function moveArrow() {
-	let arrow = gameConfig.arrow;
+	let arrow = gameConfig.board.arrow;
 	let currentTile = arrow.currentTile;
 
 	let board = gameConfig.board;

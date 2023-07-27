@@ -16,7 +16,7 @@ export function drawGame() {
 		gameConfig.canvas.height
 	);
 	drawLevel();
-	drawArrow(gameConfig.ctx, gameConfig.arrow);
+	drawArrow(gameConfig.ctx, gameConfig.board.arrow);
 }
 function drawLevel() {
 	let board = gameConfig.board;

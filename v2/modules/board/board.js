@@ -1,14 +1,25 @@
-import { populateTiles } from "./board_util.js";
+import { _createArrow, populateTiles } from "./board_util.js";
 
 export class Board {
-	constructor(width, height, squareSideLength = 100) {
+	constructor(
+		width,
+		height,
+		arrowDefaultTilePosition,
+		arrowDefaultDirection,
+		squareSideLength = 100
+	) {
 		this.width = width;
 		this.height = height;
 		this.squareSideLength = squareSideLength;
 		this.tiles = [];
-		this.arrowDefaultTile;
-		this.arrowDefaultDirection;
+		this.arrowDefaultTilePosition = arrowDefaultTilePosition;
+		this.arrowDefaultDirection = arrowDefaultDirection;
 		populateTiles(this);
+		this.arrow = _createArrow(
+			this,
+			arrowDefaultDirection,
+			arrowDefaultTilePosition
+		);
 	}
 
 	getTilePosition(row, col) {
@@ -24,23 +35,23 @@ export class Board {
 	}
 
 	activateTile(row, col) {
-		let tile = this.getTile(row, col)
+		let tile = this.getTile(row, col);
 		tile.active = true;
 	}
 
 	deactiveTile(row, col) {
-		let tile = this.getTile(row,col)
+		let tile = this.getTile(row, col);
 		tile.active = false;
 	}
 
 	setGoalTile(row, col) {
-		let tile = this.getTile(row, col)
-		tile.isGoalTile = true
+		let tile = this.getTile(row, col);
+		tile.isGoalTile = true;
 	}
 
 	unsetGoalTile(row, col) {
-		let tile = this.getTile(row, col)
-		tile.isGoalTile = false
+		let tile = this.getTile(row, col);
+		tile.isGoalTile = false;
 	}
 
 	isTileValid(tile) {
@@ -55,5 +66,14 @@ export class Board {
 			return true;
 		}
 		return false;
+	}
+
+	resetArrowToDefaultPosition() {
+		let tile = this.getTile(
+			this.arrowDefaultTilePosition.X,
+			this.arrowDefaultTilePosition.Y
+		);
+		this.arrow.direction = this.arrowDefaultDirection;
+		this.arrow.moveToTile(tile);
 	}
 }

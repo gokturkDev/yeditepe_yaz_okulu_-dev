@@ -3,6 +3,7 @@ import { Board } from "./modules/board/board.js";
 import { startCommandInputListener } from "./modules/controller/commandInputs.js";
 import { startKeyListener } from "./modules/controller/controller.js";
 import { drawGame } from "./modules/gui/gui.js";
+import { getLevel1Board } from "./modules/levels/level1.js";
 
 //Initialize the canvas
 let canvasWidth = 600;
@@ -11,7 +12,6 @@ let canvasHeight = 400;
 
 // # TODO
 // - make border red when hit
-// - reset auto
 // - change reset button icon 
 
 
@@ -25,25 +25,11 @@ export let gameConfig = {
 		this.ctx = this.context;
 		document.getElementById("gamecanvas").appendChild(this.canvas);
 
-		this.board = new Board(canvasWidth, canvasHeight, 100);
-		this.board.activateTile(0, 0);
-		this.board.activateTile(0, 1);
-		this.board.activateTile(1, 1);
-		this.board.activateTile(2, 1);
-		this.board.activateTile(2, 2);
-		this.board.activateTile(2, 3);
-
-		this.board.setGoalTile(2, 3);
-		this.board.defaultArrowTile = this.board.getTile(0, 0)
-		this.board.defaultArrowDirection = "E"
-
-
-		this.arrow = new Arrow(this.board.getTile(0, 0), "E");
+		this.board = getLevel1Board()
 
 		startKeyListener();
 		startCommandInputListener()
 	},
-	arrow: null,
 	board: null,
 	ctx: null,
 	command: {
