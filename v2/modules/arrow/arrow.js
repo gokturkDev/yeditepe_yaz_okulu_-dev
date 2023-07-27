@@ -20,10 +20,7 @@ export class Arrow {
 	}
 
 
-	eat(tile){
-		if (tile.isGoalTile){
-			tile.isGoalTile = false
-			this.score += 1
-		}
+	eat(){
+		this.score+=1
 	}
 }

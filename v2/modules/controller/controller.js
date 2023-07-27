@@ -1,4 +1,8 @@
 import { gameConfig } from "../../game.js";
+import {
+	arrowArrivedAtGoalTile,
+	arrowMovedToInvalidTile,
+} from "../game_logic/game_logic.js";
 import { playBlockedSound, playCollectSound } from "../sound/player.js";
 
 export function startKeyListener() {
@@ -48,10 +52,9 @@ export function moveArrow() {
 	if (board.isTileValid(nextTile) && nextTile.active) {
 		arrow.moveToTile(nextTile);
 		if (nextTile.isGoalTile) {
-			arrow.eat(nextTile);
-			playCollectSound();
+			arrowArrivedAtGoalTile(nextTile);
 		}
 	} else {
-		playBlockedSound();
+		arrowMovedToInvalidTile();
 	}
 }

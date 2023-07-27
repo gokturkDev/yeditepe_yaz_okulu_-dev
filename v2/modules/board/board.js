@@ -44,16 +44,6 @@ export class Board {
 		tile.active = false;
 	}
 
-	setGoalTile(row, col) {
-		let tile = this.getTile(row, col);
-		tile.isGoalTile = true;
-	}
-
-	unsetGoalTile(row, col) {
-		let tile = this.getTile(row, col);
-		tile.isGoalTile = false;
-	}
-
 	isTileValid(tile) {
 		//Tile is not out of bounds
 		if (
@@ -67,6 +57,41 @@ export class Board {
 		}
 		return false;
 	}
+
+	setGoalTile(row, col) {
+		let tile = this.getTile(row, col);
+		tile.isGoalTile = true;
+		tile.isGoalTileActive = true;
+	}
+
+	unsetGoalTile(row, col) {
+		let tile = this.getTile(row, col);
+		tile.isGoalTile = false;
+	}
+
+	collectGoal(row, col){
+		let tile = this.getTile(row, col);
+		if (tile.isGoalTile){
+			tile.isGoalTileActive = false;
+			this.arrow.eat()
+		}
+
+	}
+
+	getGoalsRemaining(){
+		let goalCount = 0;
+		for (let i = 0; i < this.tiles.length; i++){
+			for(let j=0; j < this.tiles[i].length; j++){
+				let tile = this.getTile(row, col);
+				if (tile.isGoalTile){
+					goalCount++;
+				}
+			}
+		}
+		return goalCount
+	}
+
+
 
 	resetArrowToDefaultPosition() {
 		let tile = this.getTile(

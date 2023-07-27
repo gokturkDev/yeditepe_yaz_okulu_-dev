@@ -8,6 +8,7 @@ export class Tile {
 		this.sideLength = sideLength;
 		this.active = active;
 		this.isGoalTile = isGoalTile
+		this.isGoalTileActive = isGoalTile
 	}
 
 

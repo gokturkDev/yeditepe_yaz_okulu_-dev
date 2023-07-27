@@ -57,7 +57,7 @@ function drawTiles(ctx, board) {
 function drawGoals(ctx, board) {
 	for (let i = 0; i < board.tiles.length; i++) {
 		for (let j = 0; j < board.tiles[i].length; j++) {
-			if (board.tiles[i][j].isGoalTile == true) {
+			if (board.tiles[i][j].isGoalTileActive == true) {
 				let tilePosition = board.getTilePosition(i, j);
 				drawCircle(
 					ctx,
