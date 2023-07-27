@@ -2,28 +2,21 @@ import { moveArrow, rotateArrowRight } from "./controller.js";
 
 
 
-export function parseCommand(command) {
+let pendingCommands = []
 
-	let unpackedCommand = unpackCommand(command)
-	executeCommands(unpackedCommand)
+export function parseCommand(commands, endOfCommandCallback=null) {
+
+	let unpackedCommand = unpackCommand(commands)
+	executeCommands(unpackedCommand, endOfCommandCallback)
 }
 
-
-/*
-		let commandType = commandCouple.charAt(i);
-		let commandRepetition = parseInt(commandCouple.charAt(i+1));
-		let commandCallBack;
-
-		switch (commandType) {
-			case "F":
-				commandCallBack = moveArrow;
-				break;
-			case "R":
-				commandCallBack = rotateArrowRight;
-				break;
-		}
-
-		*/
+export function resetPendingCommands(){
+	for (let i = 0; i < pendingCommands.length; i++ ){
+		let timeout = pendingCommands[i];
+		clearTimeout(timeout)
+	}
+	pendingCommands = []
+}
 
 function unpackCommand(command){
 	let unpackedCommand = ""
@@ -39,14 +32,20 @@ function unpackCommand(command){
 
 }
 
-function executeCommands(unpackedCommand){
-	console.log(unpackedCommand)
-	let currCommand = unpackedCommand.charAt(0)
-	executeCommand(currCommand)
-	unpackedCommand = unpackedCommand.substring(1, unpackedCommand.length)
-	if(unpackedCommand.length > 0){
-		setTimeout(executeCommands.bind(null, unpackedCommand), 1000);
+function executeCommands(unpackedCommand, endOfCommandCallback=null){
+	if (unpackedCommand.length > 0){
+		let currCommand = unpackedCommand.charAt(0)
+		executeCommand(currCommand)
+		unpackedCommand = unpackedCommand.substring(1, unpackedCommand.length)
+		let timeout = setTimeout(executeCommands.bind(null, unpackedCommand, endOfCommandCallback), 1000);
+		pendingCommands.push(timeout)
+	} else {
+		if (typeof endOfCommandCallback == "function"){
+			let timeout = setTimeout(endOfCommandCallback.bind(null), 1000);
+			pendingCommands.push(timeout)
+		}
 	}
+
 }
 
 function executeCommand(command) {

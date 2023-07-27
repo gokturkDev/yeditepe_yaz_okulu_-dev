@@ -1,8 +1,9 @@
 import { gameConfig } from "../../game.js";
-import { isValidCommand, parseCommand } from "./commandparser.js";
-import { togglePlayButton } from "../gui/command/command.js";
+import { isValidCommand, parseCommand, resetPendingCommands } from "./commandparser.js";
+import { getPlayButtonHTMLElement, togglePlayButton } from "../gui/command/command.js";
 
 const commandBox = document.getElementById("command");
+
 
 export function startCommandInputListener() {
 	setupPlayButton();
@@ -13,22 +14,29 @@ export function startCommandInputListener() {
 }
 export function clickedPlay() {
 	if (gameConfig.command.playingCommand == false) {
-		startPlay(this);
+		startPlay();
 	} else {
-		stopPlay(this);
+		stopPlay();
 	}
 }
-function startPlay(doc) {
+
+function startPlay() {
 	if (!isValidCommand(gameConfig.command.currentCommand)) {
 		promptInvalidCommand();
 		return false;
 	}
-	toggle(doc);
-	parseCommand(gameConfig.command.currentCommand)
+	toggle();
+	parseCommand(gameConfig.command.currentCommand, endOfCommand)
 }
-function stopPlay(doc) {
-	toggle(doc);
+function stopPlay() {
+	toggle();
 	resetArrowPosition()
+	resetPendingCommands()
+}
+
+
+function endOfCommand(){
+	stopPlay()
 }
 
 
@@ -43,9 +51,10 @@ function promptInvalidCommand() {
 	alert("Invalid Command");
 }
 
-function toggle(doc) {
+function toggle() {
 	togglePlayingCommand();
-	togglePlayButton(doc);
+	let elem = getPlayButtonHTMLElement()
+	togglePlayButton(elem);
 	toggleTextBox();
 }
 
