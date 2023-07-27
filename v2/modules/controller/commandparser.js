@@ -1,51 +1,49 @@
 import { moveArrow, rotateArrowRight } from "./controller.js";
 
+let pendingCommands = [];
 
-
-let pendingCommands = []
-
-export function parseCommand(commands, endOfCommandCallback=null) {
-
-	let unpackedCommand = unpackCommand(commands)
-	executeCommands(unpackedCommand, endOfCommandCallback)
+export function parseCommand(commands, endOfCommandCallback = null) {
+	let unpackedCommand = unpackCommand(commands);
+	executeCommands(unpackedCommand, endOfCommandCallback);
 }
 
-export function resetPendingCommands(){
-	for (let i = 0; i < pendingCommands.length; i++ ){
+export function resetPendingCommands() {
+	for (let i = 0; i < pendingCommands.length; i++) {
 		let timeout = pendingCommands[i];
-		clearTimeout(timeout)
+		clearTimeout(timeout);
 	}
-	pendingCommands = []
+	pendingCommands = [];
 }
 
-function unpackCommand(command){
-	let unpackedCommand = ""
-	for(let i = 0; i < command.length; i+=2){
+function unpackCommand(command) {
+	let unpackedCommand = "";
+	for (let i = 0; i < command.length; i += 2) {
 		let commandType = command.charAt(i);
-		let commandRepetition = parseInt(command.charAt(i+1));
-		for (let j = 0; j < commandRepetition; j++){
-			unpackedCommand += commandType
+		let commandRepetition = parseInt(command.charAt(i + 1));
+		for (let j = 0; j < commandRepetition; j++) {
+			unpackedCommand += commandType;
 		}
 	}
 
-	return unpackedCommand
-
+	return unpackedCommand;
 }
 
-function executeCommands(unpackedCommand, endOfCommandCallback=null){
-	if (unpackedCommand.length > 0){
-		let currCommand = unpackedCommand.charAt(0)
-		executeCommand(currCommand)
-		unpackedCommand = unpackedCommand.substring(1, unpackedCommand.length)
-		let timeout = setTimeout(executeCommands.bind(null, unpackedCommand, endOfCommandCallback), 1000);
-		pendingCommands.push(timeout)
+function executeCommands(unpackedCommand, endOfCommandCallback = null) {
+	if (unpackedCommand.length > 0) {
+		let currCommand = unpackedCommand.charAt(0);
+		executeCommand(currCommand);
+		unpackedCommand = unpackedCommand.substring(1, unpackedCommand.length);
+		let timeout = setTimeout(
+			executeCommands.bind(null, unpackedCommand, endOfCommandCallback),
+			1000
+		);
+		pendingCommands.push(timeout);
 	} else {
-		if (typeof endOfCommandCallback == "function"){
+		if (typeof endOfCommandCallback == "function") {
 			let timeout = setTimeout(endOfCommandCallback.bind(null), 1000);
-			pendingCommands.push(timeout)
+			pendingCommands.push(timeout);
 		}
 	}
-
 }
 
 function executeCommand(command) {
