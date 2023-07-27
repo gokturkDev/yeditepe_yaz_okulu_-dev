@@ -9,6 +9,10 @@
 				border: 2px solid black;
 				background-color: #ffff;
 			}
+
+			.padding-20 {
+				padding: 20px;
+			}
 		</style>
 		<script
 			src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"
@@ -31,10 +35,10 @@
 			<!-- Modal content -->
 			<div class="modal-content">
 				<span class="close">&times;</span>
-                <div style="display: flex; flex-direction: column; padding: 20px;">
-                    <p id="modal-text" style="margin:auto; padding-bottom: 30px;"></p>
-                    <button id="modal-button" style="padding: 10px">hey</button>
-                </div>
+				<div style="display: flex; flex-direction: column; padding: 20px">
+					<p id="modal-text" style="margin: auto; padding-bottom: 30px"></p>
+					<button id="modal-button" style="padding: 10px">hey</button>
+				</div>
 			</div>
 		</div>
 		<div class="center">
@@ -56,6 +60,18 @@
 						cols="50"
 						style="border: 4mm ridge rgba(211, 220, 50, 0.6); outline: none"
 					></textarea>
+					<div
+						style="
+							display: flex;
+							flex-direction: column;
+							justify-content: space-around;
+							margin-left: 20px;
+							margin-right: 20px;
+						"
+					>
+						<button class="padding-20">F</button>
+						<button class="padding-20">R</button>
+					</div>
 					<div class="fake-player" id="fake-player">
 						<button role="play" class="play"></button>
 						<button role="pause" class="pause hidden"></button>
