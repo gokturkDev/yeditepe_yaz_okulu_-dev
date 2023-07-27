@@ -6,6 +6,7 @@ export class Board {
 		height,
 		arrowDefaultTilePosition,
 		arrowDefaultDirection,
+		levelNo,
 		squareSideLength = 100
 	) {
 		this.width = width;
@@ -14,6 +15,7 @@ export class Board {
 		this.tiles = [];
 		this.arrowDefaultTilePosition = arrowDefaultTilePosition;
 		this.arrowDefaultDirection = arrowDefaultDirection;
+		this.levelNo = levelNo;
 		populateTiles(this);
 		this.arrow = _createArrow(
 			this,

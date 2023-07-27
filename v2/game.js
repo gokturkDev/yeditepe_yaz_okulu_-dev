@@ -2,8 +2,9 @@ import { Arrow } from "./modules/arrow/arrow.js";
 import { Board } from "./modules/board/board.js";
 import { startCommandInputListener } from "./modules/controller/commandInputs.js";
 import { startKeyListener } from "./modules/controller/controller.js";
+import { arrowArrivedAtGoalTile } from "./modules/game_logic/game_logic.js";
 import { drawGame } from "./modules/gui/gui.js";
-import { getLevel1Board } from "./modules/levels/level1.js";
+import { getLevel1Board } from "./modules/levels/levels.js";
 
 //Initialize the canvas
 let canvasWidth = 600;
@@ -25,9 +26,10 @@ export let gameConfig = {
 		this.ctx = this.context;
 		document.getElementById("gamecanvas").appendChild(this.canvas);
 		this.board = getLevel1Board()
-
+		
 		startKeyListener();
 		startCommandInputListener()
+		
 	},
 	board: null,
 	ctx: null,

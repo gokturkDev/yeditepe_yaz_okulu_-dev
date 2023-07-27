@@ -18,7 +18,7 @@ export function createPopup(popupText, buttonText=null, buttonCallback=null){
         modal.style.display = "none";
       }
     } else {
-      modelBtn.style.display = "none"
+      modalBtn.style.display = "none"
     }
 
 }
