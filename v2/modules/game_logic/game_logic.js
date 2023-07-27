@@ -1,6 +1,6 @@
 import { gameConfig } from "../../game.js";
 import { makeConfettiEffect } from "../gui/confetti/confetti.js";
-import { popupLevelFinished } from "../gui/gui2d/levelFinishedModal.js";
+import { createPopup } from "../gui/gui2d/levelFinishedModal.js";
 import { playBlockedSound, playCollectSound } from "../sound/player.js";
 
 
@@ -10,13 +10,18 @@ export function arrowArrivedAtGoalTile(tile) {
 	playCollectSound();
     if (areAllGoalsEaten()){
         makeConfettiEffect(3000)
-        popupLevelFinished()
+        createPopup("Congratulations, you passed the level!", "Continue to the next level", continueToNextLevel)
     }   
 
 }
 
 export function arrowMovedToInvalidTile() {
 	playBlockedSound();
+}
+
+
+function continueToNextLevel(){
+    console.log("hello")
 }
 
 
