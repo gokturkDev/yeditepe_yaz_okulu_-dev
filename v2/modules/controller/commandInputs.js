@@ -6,7 +6,8 @@ import {
 } from "./commandparser.js";
 import {
 	addCallbackToPlayButton,
-	startInputListenerForCommandBox,
+	getCommand,
+	startListenerForCommandButtons,
 	toggle,
 } from "../gui/command/command.js";
 
@@ -14,11 +15,13 @@ import {
 
 export function startCommandInputListener() {
 	addCallbackToPlayButton(clickedPlay);
-	startInputListenerForCommandBox()
+	startListenerForCommandButtons()
 }
 
 
 export function clickedPlay() {
+	gameConfig.command.currentCommand = getCommand()
+
 	if (gameConfig.command.playingCommand == false) {
 		startPlay();
 	} else {
