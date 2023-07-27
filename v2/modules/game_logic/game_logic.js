@@ -6,6 +6,9 @@ export function arrowArrivedAtGoalTile(tile) {
     
 	gameConfig.board.collectGoal(tile.row, tile.col);
 	playCollectSound();
+    if (areAllGoalsEaten()){
+        makeConfettiEffect(1000)
+    }
 
 }
 
@@ -14,6 +17,6 @@ export function arrowMovedToInvalidTile() {
 }
 
 
-function checkIfAllGoalsAreEaten(){
-    
+function areAllGoalsEaten(){
+    return !(gameConfig.board.getGoalsRemaining() > 0)
 }

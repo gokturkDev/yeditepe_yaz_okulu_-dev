@@ -82,8 +82,8 @@ export class Board {
 		let goalCount = 0;
 		for (let i = 0; i < this.tiles.length; i++){
 			for(let j=0; j < this.tiles[i].length; j++){
-				let tile = this.getTile(row, col);
-				if (tile.isGoalTile){
+				let tile = this.getTile(i, j);
+				if (tile.isGoalTileActive){
 					goalCount++;
 				}
 			}
