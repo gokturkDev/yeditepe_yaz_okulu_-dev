@@ -6,16 +6,21 @@ var modalBtn = document.getElementById("modal-button")
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
-export function createPopup(popupText, buttonText, buttonCallback=null){
+export function createPopup(popupText, buttonText=null, buttonCallback=null){
     modal.style.display = "block";
     modalText.innerHTML = popupText
-    modalBtn.innerHTML = buttonText
-    modalBtn.onclick = function(){
-      if (typeof buttonCallback == "function"){
-        buttonCallback()
+    if(buttonText != null){
+      modalBtn.innerHTML = buttonText
+      modalBtn.onclick = function(){
+        if (typeof buttonCallback == "function"){
+          buttonCallback()
+        }
+        modal.style.display = "none";
       }
-      modal.style.display = "none";
-  }
+    } else {
+      modelBtn.style.display = "none"
+    }
+
 }
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {

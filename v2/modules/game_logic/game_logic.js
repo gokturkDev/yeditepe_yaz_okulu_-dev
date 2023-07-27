@@ -1,6 +1,7 @@
 import { gameConfig } from "../../game.js";
 import { makeConfettiEffect } from "../gui/confetti/confetti.js";
 import { createPopup } from "../gui/gui2d/levelFinishedModal.js";
+import { getLevel2Board } from "../levels/level2.js";
 import { playBlockedSound, playCollectSound } from "../sound/player.js";
 
 
@@ -21,7 +22,7 @@ export function arrowMovedToInvalidTile() {
 
 
 function continueToNextLevel(){
-    console.log("hello")
+    gameConfig.board = getLevel2Board()
 }
 
 
